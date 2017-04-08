@@ -30,7 +30,7 @@ module.exports = function(app) {
       students: [
         {id: 1, name: "A", age:30},
         {id: 2, name: "B", age:52}
-      ];
+      ]
     });
   });
 };
