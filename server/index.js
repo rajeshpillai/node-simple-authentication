@@ -12,16 +12,17 @@
 const bodyParser = require("body-parser");
 
 module.exports = function(app) {
+  app.use(bodyParser.urlencoded({extended: true}));
+
   app.post('/token', function (req, res){
     if (req.body.username === "rajesh" &&
-        req.body.password === "passsword") {
+        req.body.password === "password") {
       res.send({access_token: 'secretcode'});
     } else {
       res.status(400).send({error: 'invalid_grant'});
     }
   });
 
-  app.use(bodyParser.urlencoded({extended: true}));
   app.get("/api/students", function (req, res){
     if (req.headers.authorization != "Bearer secretcode") {
       return res.status(401).send("Unauthorized");
